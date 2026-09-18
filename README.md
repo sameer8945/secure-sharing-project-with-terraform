@@ -21,6 +21,35 @@ The entire AWS infrastructure is created and managed using **Terraform**, making
 9. The creator can delete the file using the share code.
 10. Deleting a file removes both the S3 object and its DynamoDB metadata.
 
+
+## AWS Services Used
+
+Amazon S3 — Private file storage
+Amazon DynamoDB — File metadata and download count
+AWS Lambda — Backend logic
+Amazon API Gateway — HTTP API endpoints
+AWS IAM — Access control and least-privilege permissions
+Amazon CloudWatch — Lambda logging
+Terraform — Infrastructure provisioning and management
+
+## 🚀 How to Run
+
+1. Clone the repository.
+2. Configure your AWS credentials using `aws configure`.
+3. Go to the `environments/dev` directory.
+4. Run `terraform init`.
+5. Run `terraform apply` and type `yes`.
+6. Copy the API Gateway URL from the Terraform output command.
+7. Add the API URL to `frontend/index.html`.
+8. Open `frontend/index.html` using VS Code Live Server.
+9. Use the website to upload, download, and delete files using the generated share code.
+
+## 🧹 After Testing
+
+Run `terraform destroy` from the `environments/dev` directory to remove the AWS resources.
+
+
+
 ## Architecture
 
 ```text
@@ -50,30 +79,3 @@ The entire AWS infrastructure is created and managed using **Terraform**, making
                │   S3    │ │ DynamoDB   │
                │  Files  │ │  Metadata  │
                └─────────┘ └────────────┘
-
-
-## AWS Services Used
-
-Amazon S3 — Private file storage
-Amazon DynamoDB — File metadata and download count
-AWS Lambda — Backend logic
-Amazon API Gateway — HTTP API endpoints
-AWS IAM — Access control and least-privilege permissions
-Amazon CloudWatch — Lambda logging
-Terraform — Infrastructure provisioning and management
-
-## 🚀 How to Run
-
-1. Clone the repository.
-2. Configure your AWS credentials using `aws configure`.
-3. Go to the `environments/dev` directory.
-4. Run `terraform init`.
-5. Run `terraform apply` and type `yes`.
-6. Copy the API Gateway URL from the Terraform output command.
-7. Add the API URL to `frontend/index.html`.
-8. Open `frontend/index.html` using VS Code Live Server.
-9. Use the website to upload, download, and delete files using the generated share code.
-
-## 🧹 After Testing
-
-Run `terraform destroy` from the `environments/dev` directory to remove the AWS resources.
